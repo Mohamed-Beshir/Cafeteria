@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 
 
@@ -46,3 +48,8 @@ Route::middleware(['auth', 'customer'])->group(function () {
     // Customer routes go here
     Route::get('/customer', [CustomerController::class, 'index']);
 });
+
+// category
+Route::resource("categories",CategoryController::class);
+//product
+Route::resource("products",ProductController::class);
