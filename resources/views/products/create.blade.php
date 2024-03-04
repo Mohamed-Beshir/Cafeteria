@@ -7,7 +7,7 @@
 <form method="post" action="{{route("products.store")}}" enctype="multipart/form-data">
 @csrf
 
-@if ($errors->any())
+{{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach($errors->all() as $error)
@@ -15,7 +15,7 @@
             @endforeach
         </ul>
     </div>
-    @endif
+    @endif --}}
 
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">name</label>

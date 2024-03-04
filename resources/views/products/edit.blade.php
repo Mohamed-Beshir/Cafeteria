@@ -7,7 +7,7 @@
 @csrf
 @method('PUT') <!-- Adding method field for PUT request -->
 
-    @if ($errors->any())
+    {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach($errors->all() as $error)
@@ -15,7 +15,7 @@
             @endforeach
         </ul>
     </div>
-    @endif
+    @endif --}}
 
     <div class="mb-3">
         <label for="name" class="form-label">name</label>

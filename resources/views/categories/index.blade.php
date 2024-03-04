@@ -2,12 +2,12 @@
 @section('content')
 
 <div class="container m-2 ">
-    <div class="row">
+    <div class="row ">
         <div class="col-12 m-5 ">
 
             <a  href="{{route("categories.create")}}" class="btn btn-primary m-3">create category</a>
 
-<table class="table border ">
+<table class="table border">
 
 
     <thead class="bg-warning bg-gradient text-white table-dark">
@@ -15,7 +15,7 @@
             <th scope="col">ID</th>
             <th scope="col">name</th>
 
-            <th scope="col">Insert</th>
+            <th scope="col"> C.product</th>
             <th scope="col">edit</th>
             <th scope="col">delete</th>
         </tr>
