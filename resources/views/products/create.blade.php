@@ -7,7 +7,15 @@
 <form method="post" action="{{route("products.store")}}" enctype="multipart/form-data">
 @csrf
 
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">name</label>
@@ -17,8 +25,8 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">description</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="description" value="{{old('description')}}">
+        <label for="description" class="form-label">description</label>
+        <input type="text" class="form-control" id="description" aria-describedby="emailHelp" name="description" value="{{old('description')}}">
         @error('description')
             <p class="text-danger">{{$message}}</p>
         @enderror

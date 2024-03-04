@@ -2,6 +2,10 @@
 @section('content')
 
 {{--  --}}
+<div class="container ">
+    <h3  class="card-text text-primary m-5" >product : {{$product['name']}} </h3>
+
+    <div class="row align-items-center">
 <div class="card" style="width: 18rem;">
     <img  src="{{asset('img/'.$product['image'])}}">
     <div class="card-body">

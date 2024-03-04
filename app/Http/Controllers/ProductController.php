@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
+
+
 class ProductController extends Controller
 {
     /**
@@ -38,13 +40,17 @@ class ProductController extends Controller
     {
         $request->validate([
             "name"=>"required|min:3|unique:categories",
-            "image" =>"required|image|mimes:jpg,png,jpeg,gif|max:2048"
+            "description" =>"required",
+            "price"=>"required|numeric",
+            "quantity"=>"required|integer",
+            "image" =>"required|image|mimes:jpg,png,jpeg,gif,webp|max:2048"
         ]);
         //
         if($request->hasFile("image")){
             $imageName =time().".".$request->image->extension();
 
             $request->image->move(public_path("img"),$imageName);
+
 
         $product =new Product;
         $product -> name =$request->name;
@@ -67,7 +73,7 @@ class ProductController extends Controller
     {
         //
         // $product =Product::findorfail($id);
-        return view('products.showStudent',["product"=>$product]);
+        return view('products.show',["product"=>$product]);
     }
 
     /**
@@ -85,29 +91,47 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+
+
+
         $request->validate([
-            "name" => "required|min:3",
-            "image" => "required",
-            "grade" => "integer"
-        ], [
-            "name.required" => "student name is required",
-            "name.min" => "student name is not valid",
-            "image.required" => "student image is required"
+            "name"=>"required|min:3|".Rule::unique('categories')->ignore
+            ($product->name),
+            "description" =>"required",
+            "price"=>"required|numeric",
+            "quantity"=>"required|integer",
+            "image" =>"image|mimes:jpg,png,,PNG,jpeg,gif,webp|max:2048"
         ]);
+        if($request->hasFile("image")){
+            $imageName =time().".".$request->image->extension();
+
+            $request->image->move(public_path("img"),$imageName);
+
 
         // $product = Product::findOrFail($id);
         $product->name = $request->input("name");
         $product->description = $request->input("description");
-        $product->image = $request->input("image");
+        $product -> image =$imageName;
         $product->price = $request->input("price");
         $product->quantity = $request->input("quantity");
         $product->save();
 
 
+
+
+
         return to_route("products.index");
     }
-
+    else{
+        $product->name = $request->input("name");
+        $product->description = $request->input("description");
+        // $product -> image =$imageName;
+        $product->price = $request->input("price");
+        $product->quantity = $request->input("quantity");
+        $product->save();
+        return to_route("products.index");
+    }
+    }
     /**
      * Remove the specified resource from storage.
      */

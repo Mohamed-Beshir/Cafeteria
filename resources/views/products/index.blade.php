@@ -4,7 +4,7 @@
 <div class="container m-2 ">
     <div class="row">
         <div class="col-12 m-5 ">
-            <a href="{{route("products.create")}}" class="btn btn-primary m-3">create posts</a>
+            <a href="{{route("products.create")}}" class="btn btn-primary m-3">create product</a>
 
 <table class="table table border" style="vertical-align: middle;">
 
