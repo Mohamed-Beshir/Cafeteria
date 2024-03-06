@@ -1,8 +1,5 @@
 @extends('main')
 @section('content')
-  {{-- @if($category->user)
-<p> Created by:{{$track->user->name}}</p>
-@endif --}}
 <div class="container text-center">
     <div class="row justify-content-center">
         <div class="col-6">
@@ -18,8 +15,6 @@
     <div class="card-body">
 
       <h5 class="card-title">{{$products->name}}</h5>
-
-
 
     </div>
 </div>

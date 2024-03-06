@@ -56,14 +56,7 @@
         <td>
             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-success">Edit</a>
         </td>
-        {{-- <td> --}}
-            {{-- <a class="btn btn-danger" href="{{route('student.destroy',$student['id'])}}">delete</a> --}}
-            {{-- <form method="post" action="{{route('student.destroy',$student['id'])}}">
-                @csrf
-                @method("delete")
-                <button class="btn btn-danger">delete</button>
-            </form>
-        </td> --}}
+
         <td>
             <form id="deleteForm" method="post" action="{{ route('products.destroy', $product['id']) }}">
                 @csrf
@@ -74,7 +67,7 @@
 
         <script>
             function confirmDelete() {
-                if (confirm("Are you sure you want to delete this student?")) {
+                if (confirm("Are you sure you want to delete this product?")) {
                     document.getElementById("deleteForm").submit();
                     return true;
                 } else {

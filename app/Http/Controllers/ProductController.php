@@ -59,7 +59,6 @@ class ProductController extends Controller
         $product -> price =$request->price;
         $product -> quantity =$request->quantity;
         $product -> category_id =$request->category_id;
-        // $product->category_id =Auth::id();
         $product->save();
 
         return to_route("products.index");
@@ -72,7 +71,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
-        // $product =Product::findorfail($id);
         return view('products.show',["product"=>$product]);
     }
 
@@ -82,7 +80,6 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
-        // $product = Product::findOrFail($id);
         return view('products.edit', compact('product'));
     }
 
@@ -108,7 +105,6 @@ class ProductController extends Controller
             $request->image->move(public_path("img"),$imageName);
 
 
-        // $product = Product::findOrFail($id);
         $product->name = $request->input("name");
         $product->description = $request->input("description");
         $product -> image =$imageName;
@@ -125,7 +121,6 @@ class ProductController extends Controller
     else{
         $product->name = $request->input("name");
         $product->description = $request->input("description");
-        // $product -> image =$imageName;
         $product->price = $request->input("price");
         $product->quantity = $request->input("quantity");
         $product->save();
@@ -138,7 +133,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-        // $product = Product::find($id);
+
         $product ->delete();
 
         return to_route("products.index");

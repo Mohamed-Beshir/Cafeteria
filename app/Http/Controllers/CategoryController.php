@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
         ]);
         //
-        
+
 
         $category =new category();
         $category->name =$request->name;

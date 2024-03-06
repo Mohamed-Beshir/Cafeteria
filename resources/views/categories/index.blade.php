@@ -15,7 +15,7 @@
             <th scope="col">ID</th>
             <th scope="col">name</th>
 
-            <th scope="col"> C.product</th>
+            <th scope="col">products</th>
             <th scope="col">edit</th>
             <th scope="col">delete</th>
         </tr>
@@ -31,23 +31,12 @@
                 {{$category["name"]}}
             </td>
 
-            {{-- <td>
-                <img style="width: 100px" src="{{asset('images/'.$student['image'])}}">
-                {{$student["image"]}}
-            </td> --}}
+
              <td><a href="{{route('categories.show',$category['id'])}}" class="btn btn-primary">show</a></td>
              <td>
                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success">Edit</a>
             </td>
-            {{-- <td> --}}
-                {{-- <a class="btn btn-danger" href="{{route('student.destroy',$student['id'])}}">delete</a> --}}
-                {{-- <form method="post" action="{{route('tracks.destroy',$track['id'])}}">
-                    @csrf
-                    @method("delete")
-                    <button class="btn btn-danger">delete</button>
-                </form>
-            </td> --}}
-    {{--  --}}
+
             <td>
                 <form id="deleteForm" method="post" action="{{ route('categories.destroy',$category['id'])}}">
                     @csrf
@@ -58,7 +47,7 @@
 
             <script>
                 function confirmDelete() {
-                    if (confirm("Are you sure you want to delete this student?")) {
+                    if (confirm("Are you sure you want to delete this category?")) {
                         document.getElementById("deleteForm").submit();
                         return true;
                     } else {
@@ -66,8 +55,6 @@
                     }
                 }
             </script>
-    {{--  --}}
-
         </tr>
         <tbody>
         @endforeach

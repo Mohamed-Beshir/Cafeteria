@@ -5,17 +5,7 @@
         <div class="col-12 m-5 ">
 <form method="post" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
 @csrf
-@method('PUT') <!-- Adding method field for PUT request -->
-
-    {{-- @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif --}}
+@method('PUT') 
 
     <div class="mb-3">
         <label for="name" class="form-label">name</label>
